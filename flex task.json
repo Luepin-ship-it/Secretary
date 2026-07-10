@@ -1,0 +1,428 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "size": "mega",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "text",
+                "text": "งานวันนี้ (Today's Tasks)",
+                "color": "#004FE6",
+                "weight": "bold",
+                "size": "md"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "📅 เลือกวันที่",
+                    "size": "xs",
+                    "color": "#004FE6",
+                    "weight": "bold",
+                    "align": "end"
+                  }
+                ],
+                "action": {
+                  "type": "datetimepicker",
+                  "data": "action=view_date",
+                  "mode": "date"
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "สถานะ: กำลังดำเนินการ (In Progress)",
+            "color": "#000000",
+            "size": "xs",
+            "margin": "sm",
+            "weight": "bold"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "md",
+            "backgroundColor": "#CCCCCC",
+            "height": "8px",
+            "cornerRadius": "30px",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "width": "60%",
+                "backgroundColor": "#004FE6",
+                "height": "8px",
+                "cornerRadius": "30px",
+                "contents": []
+              }
+            ]
+          }
+        ],
+        "paddingAll": "16px"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "paddingAll": "16px",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#F2F7FF",
+            "paddingAll": "12px",
+            "cornerRadius": "8px",
+            "borderColor": "#004FE6",
+            "borderWidth": "2px",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "⏰ 10:30 น.",
+                    "size": "xs",
+                    "color": "#004FE6",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "🚨 HIGH PRIORITY",
+                    "size": "xs",
+                    "color": "#CC0000",
+                    "align": "end",
+                    "weight": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "• ติดตาม Owner TAN617 (คุณนัท): แจ้งเจ้าของ · ลูกค้าจะจบมือ 1 บูราสิริ",
+                "color": "#000000",
+                "size": "sm",
+                "wrap": true,
+                "margin": "sm",
+                "weight": "bold"
+              },
+              {
+                "type": "text",
+                "text": "ต้องการบ้าน 200 ตร.ม. ขึ้นไป เลียบคลองสอง นัดคุยสเปกเพิ่มเติม",
+                "color": "#333333",
+                "size": "xs",
+                "wrap": true,
+                "margin": "xs"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#FFFFFF",
+            "paddingAll": "12px",
+            "cornerRadius": "8px",
+            "borderColor": "#CCCCCC",
+            "borderWidth": "1px",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "⏰ 14:00 น.",
+                    "size": "xs",
+                    "color": "#004FE6",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "⚡ NORMAL",
+                    "size": "xs",
+                    "color": "#333333",
+                    "align": "end",
+                    "weight": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "• อัปเดต Main Stock Sheet: โซนศรีนครินทร์",
+                "color": "#000000",
+                "size": "sm",
+                "wrap": true,
+                "margin": "sm",
+                "weight": "bold"
+              }
+            ]
+          }
+        ]
+      },
+      "styles": {
+        "header": {
+          "backgroundColor": "#FFFFFF"
+        },
+        "body": {
+          "backgroundColor": "#FFFFFF"
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "mega",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "งานที่ค้าง (Overdue Tasks)",
+            "color": "#CC0000",
+            "weight": "bold",
+            "size": "md"
+          },
+          {
+            "type": "text",
+            "text": "สถานะ: รอดำเนินการค้างสะสม (Pending)",
+            "color": "#000000",
+            "size": "xs",
+            "margin": "sm",
+            "weight": "bold"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "md",
+            "backgroundColor": "#CCCCCC",
+            "height": "8px",
+            "cornerRadius": "30px",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "width": "80%",
+                "backgroundColor": "#CC0000",
+                "height": "8px",
+                "cornerRadius": "30px",
+                "contents": []
+              }
+            ]
+          }
+        ],
+        "paddingAll": "16px"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "paddingAll": "16px",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#FFF2F2",
+            "paddingAll": "12px",
+            "cornerRadius": "8px",
+            "borderColor": "#CC0000",
+            "borderWidth": "2px",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "📅 ค้างสะสม",
+                    "size": "xs",
+                    "color": "#CC0000",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "🚨 HIGH PRIORITY",
+                    "size": "xs",
+                    "color": "#CC0000",
+                    "align": "end",
+                    "weight": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "• ติดตาม Owner TAN818 (คุณบิวตี้)",
+                "color": "#000000",
+                "size": "sm",
+                "wrap": true,
+                "margin": "sm",
+                "weight": "bold"
+              },
+              {
+                "type": "text",
+                "text": "รายละเอียด: แจ้งเจ้าของ · ลูกค้า Reject · นพวรรณ — ดูเช่า บ้านติดเช่าไปแล้ว",
+                "color": "#333333",
+                "size": "xs",
+                "wrap": true,
+                "margin": "xs"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#FFF2F2",
+            "paddingAll": "12px",
+            "cornerRadius": "8px",
+            "borderColor": "#CC0000",
+            "borderWidth": "2px",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "📅 ค้างสะสม",
+                    "size": "xs",
+                    "color": "#CC0000",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "🚨 HIGH PRIORITY",
+                    "size": "xs",
+                    "color": "#CC0000",
+                    "align": "end",
+                    "weight": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "• ติดตาม Owner TAN468 (คุณสัญญา)",
+                "color": "#000000",
+                "size": "sm",
+                "wrap": true,
+                "margin": "sm",
+                "weight": "bold"
+              },
+              {
+                "type": "text",
+                "text": "รายละเอียด: แจ้งเจ้าของ · ลูกค้า Reject · พรรณิกา — งบ 1-3ล. หาบ้านแฝด เห็นราคาดีเลยถามไว้ก่อน ไม่มีแพลนซื้อจริงจัง",
+                "color": "#333333",
+                "size": "xs",
+                "wrap": true,
+                "margin": "xs"
+              }
+            ]
+          }
+        ]
+      },
+      "styles": {
+        "header": {
+          "backgroundColor": "#FFFFFF"
+        },
+        "body": {
+          "backgroundColor": "#FFFFFF"
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "mega",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "งานที่เสร็จแล้ว (Completed)",
+            "color": "#008037",
+            "weight": "bold",
+            "size": "md"
+          },
+          {
+            "type": "text",
+            "text": "สถานะ: ปิดงานเรียบร้อย (Done)",
+            "color": "#000000",
+            "size": "xs",
+            "margin": "sm",
+            "weight": "bold"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "md",
+            "backgroundColor": "#CCCCCC",
+            "height": "8px",
+            "cornerRadius": "30px",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "width": "100%",
+                "backgroundColor": "#008037",
+                "height": "8px",
+                "cornerRadius": "30px",
+                "contents": []
+              }
+            ]
+          }
+        ],
+        "paddingAll": "16px"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "paddingAll": "16px",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "🎉 เคลียร์งานสำเร็จแล้วทั้งหมดของวันนี้",
+            "color": "#008037",
+            "size": "sm",
+            "weight": "bold",
+            "align": "center",
+            "margin": "md"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xl",
+            "contents": [
+              {
+                "type": "button",
+                "action": {
+                  "type": "uri",
+                  "label": "📂 กดดูงานที่เสร็จสิ้นเพิ่มเติม",
+                  "uri": "https://luepin.com/dashboard?tab=completed"
+                },
+                "style": "secondary",
+                "color": "#008037",
+                "height": "sm"
+              }
+            ]
+          }
+        ]
+      },
+      "styles": {
+        "header": {
+          "backgroundColor": "#FFFFFF"
+        },
+        "body": {
+          "backgroundColor": "#FFFFFF"
+        }
+      }
+    }
+  ]
+}

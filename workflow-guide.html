@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เลขา AI — ผัง Workflow (เข้าใจง่าย)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f8f8;
+      --card: #fff;
+      --border: #e0e0e0;
+      --text: #1a1a1a;
+      --muted: #666;
+      --accent: #e2e800;
+      --line: #06c755;
+      --web: #2563eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Noto Sans Thai', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding: 1.5rem 1rem 3rem;
+    }
+    .wrap { max-width: 520px; margin: 0 auto; }
+    h1 { font-size: 1.35rem; margin: 0 0 0.25rem; }
+    .sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.75rem;
+    }
+    .legend span {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+    .legend .l-line { border-color: var(--line); color: #047857; }
+    .legend .l-web { border-color: var(--web); color: var(--web); }
+    .legend .l-main { background: var(--accent); border-color: #c4c900; font-weight: 700; }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    section h2 {
+      font-size: 0.95rem;
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .badge-main {
+      font-size: 0.65rem;
+      background: var(--accent);
+      padding: 0.1rem 0.45rem;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .box {
+      width: 100%;
+      max-width: 340px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      text-align: center;
+      background: var(--card);
+    }
+    .box strong { display: block; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .box small { color: var(--muted); font-size: 0.75rem; line-height: 1.4; display: block; }
+    .box--line { border-color: var(--line); background: #f0fdf4; }
+    .box--web { border-color: var(--web); background: #eff6ff; }
+    .box--accent { border-color: #c4c900; background: #fffef0; }
+    .box--done { border-color: #141414; background: #fafafa; }
+
+    .arrow { font-size: 1.1rem; color: var(--muted); padding: 0.35rem 0; }
+    .arrow-label { font-size: 0.72rem; color: var(--muted); text-align: center; margin: 0.25rem 0 0.5rem; }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    @media (max-width: 400px) { .split { grid-template-columns: 1fr; } }
+
+    .note {
+      margin: 1rem 0 0;
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+    }
+    ul.simple {
+      margin: 0.75rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    ul.simple li { margin-bottom: 0.35rem; }
+
+    /* ประวัติการพัฒนา */
+    .status-grid {
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .status-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.5rem 0.65rem;
+      background: #f9f9f9;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .status-row dt {
+      flex: 0 0 5.5rem;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.72rem;
+    }
+    .status-row dd {
+      margin: 0;
+      color: var(--muted);
+      flex: 1;
+    }
+    .changelog {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .changelog > li {
+      position: relative;
+      padding: 0 0 1.1rem 1rem;
+      border-left: 2px solid var(--border);
+      margin-left: 0.35rem;
+    }
+    .changelog > li:last-child {
+      padding-bottom: 0;
+      border-left-color: transparent;
+    }
+    .changelog > li::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 0.35rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid #c4c900;
+    }
+    .changelog time {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #047857;
+      margin-bottom: 0.2rem;
+    }
+    .changelog h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .changelog ul {
+      margin: 0;
+      padding-left: 1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .changelog ul li { margin-bottom: 0.2rem; }
+    .changelog .tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      margin-right: 0.25rem;
+      vertical-align: middle;
+    }
+    .tag--fix { background: #dbeafe; color: #1d4ed8; }
+    .tag--new { background: #fef9c3; color: #854d0e; }
+    .tag--cut { background: #f3f4f6; color: #4b5563; }
+    .dev-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: #f4f4f5;
+      border-radius: 8px;
+      padding: 0.6rem 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px dashed var(--border);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>เลขา AI — ผัง Workflow</h1>
+    <p class="sub">ทางเดียวที่ชัด — LINE ต้อนรับ · เว็บลงทะเบียน · Dashboard ทำงานเต็มจอ</p>
+
+    <div class="legend">
+      <span class="l-main">ทางหลัก</span>
+      <span class="l-line">LINE</span>
+      <span class="l-web">เว็บ</span>
+      <a href="#dev-changelog" style="font-size:0.75rem;color:var(--muted);margin-left:auto;text-decoration:underline;">ประวัติการแก้ไข ↓</a>
+    </div>
+
+    <!-- CURRENT STATUS -->
+    <section id="dev-status">
+      <h2>สถานะปัจจุบัน</h2>
+      <dl class="status-grid">
+        <div class="status-row">
+          <dt>ทางหลัก</dt>
+          <dd>Add LINE → carousel 6 การ์ด → <code>login.php</code> → <code>register.php</code> (ครั้งเดียว) → <code>dashboard.php</code> ↔ คุย LINE</dd>
+        </div>
+        <div class="status-row">
+          <dt>LINE ต้อนรับ</dt>
+          <dd>Carousel จาก <code>welcome_flex_lib.php</code> เท่านั้น · Greeting message ปิดแล้ว</dd>
+        </div>
+        <div class="status-row">
+          <dt>ลงทะเบียน</dt>
+          <dd>Google Drive บังคับ · Sheet ไม่บังคับ · สาขาเริ่มต้น = อสังหาฯ · เมทัลชีทหยุดชั่วคราว</dd>
+        </div>
+        <div class="status-row">
+          <dt>คนเก่า</dt>
+          <dd>LINE Login แล้วเข้า Dashboard ทันที · ไม่วน register/นโยบายซ้ำ</dd>
+        </div>
+        <div class="status-row">
+          <dt>รอทำ / พัก</dt>
+          <dd>สาขาเมทัลชีท (<code>ms-workflow-internal/</code>) · Rich Menu · ปรับโครงสร้างตามคำขอใน LINE</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- MAIN PATH -->
+    <section>
+      <h2>คนใหม่ — ลำดับเดียว <span class="badge-main">ทำแบบนี้</span></h2>
+      <div class="flow">
+        <div class="box box--line">
+          <strong>① Add เลขา AI ใน LINE</strong>
+          <small>ระบบส่ง Flex Carousel 6 การ์ดอัตโนมัติ<br>แนะนำตัว · นโยบาย · โครงสร้าง · ปุ่มลงทะเบียน</small>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="box box--web box--accent">
+          <strong>② login.php — เข้าสู่ระบบด้วย LINE</strong>
+          <small>อ่านการ์ด onboarding (ถ้าต้องการ) · กด LINE Login</small>
+        </div>
+        <div class="arrow">↓</div>
+        <p class="arrow-label">ยังไม่เคยลงทะเบียน → register · ลงทะเบียนแล้ว → ข้ามไป Dashboard</p>
+        <div class="box box--web box--accent">
+          <strong>③ register.php (ครั้งเดียว)</strong>
+          <small>ชื่อ · เบอร์ · Google Drive (บังคับ)<br>Google Sheet (ไม่บังคับ) · ยอมรับนโยบาย · ตอบคำถามสั้น</small>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="box box--web box--done">
+          <strong>④ dashboard.php</strong>
+          <small>แก้ไขข้อมูลจำนวนมากบนเว็บ · ดู Lead · งาน · รายงาน</small>
+        </div>
+        <div class="arrow">↕</div>
+        <div class="box box--line">
+          <strong>⑤ คุยเลขา AI ใน LINE</strong>
+          <small>บันทึกเร็ว · ถาม AI · แก้จุดเล็กๆ ได้<br>ข้อมูลเยอะ → แก้บนเว็บสะดวกกว่า</small>
+        </div>
+      </div>
+      <p class="note"><strong>จำง่ายๆ:</strong> LINE = ต้อนรับ + ผู้ช่วยประจำวัน · เว็บ = ลงทะเบียนครั้งแรก + แก้ข้อมูลเยอะ · ต้องเป็น LINE คนเดียวกันทั้งคู่</p>
+    </section>
+
+    <!-- RETURNING -->
+    <section>
+      <h2>คนเคยลงทะเบียนแล้ว</h2>
+      <div class="flow">
+        <div class="box box--web">
+          <strong>login.php → LINE Login</strong>
+          <small>ข้าม register และนโยบาย · เข้า Dashboard ทันที</small>
+        </div>
+        <div class="arrow">↕</div>
+        <div class="box box--line">
+          <strong>ทัก LINE ได้เลย</strong>
+          <small>ไม่ส่ง carousel ต้อนรับซ้ำ · ใช้งาน AI ปกติ</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- STRUCTURE -->
+    <section>
+      <h2>ปรับโครงสร้าง (สาขาอาชีพอื่น)</h2>
+      <div class="flow">
+        <div class="box box--line">
+          <strong>พิมพ์「ปรับโครงสร้าง」ใน LINE</strong>
+          <small>หรือกดปุ่มในการ์ดที่ 5 ของ Flex Carousel<br>แอดมินตอบภายใน 1 ชม. · 10:00–20:00 ทุกวัน</small>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="box box--web">
+          <strong>ดูโครงสร้างเบื้องต้น (เว็บ)</strong>
+          <small>login.php?slide=4 — demo เมนู Dashboard แบบอสังหาฯ<br>ข้อความปรับโครงสร้างอยู่ใน LINE เท่านั้น ไม่ซ้ำบนเว็บ</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAILY -->
+    <section>
+      <h2>แก้ไขข้อมูล — เลือกช่องทางตามงาน</h2>
+      <div class="split">
+        <div class="box box--line">
+          <strong>LINE</strong>
+          <small>แก้จุดเล็ก · บันทึกเร็ว · ถาม AI</small>
+        </div>
+        <div class="box box--web">
+          <strong>Dashboard / profile</strong>
+          <small>แก้หลายฟิลด์ · Google Drive/Sheet · ตั้งค่าบัญชี</small>
+        </div>
+      </div>
+      <ul class="simple">
+        <li>ข้อมูลแยกตาม LINE ID — ไม่ปนกับคนอื่น</li>
+        <li>โครงสร้างเริ่มต้น = ที่ปรึกษาอสังหาริมทรัพย์ (เมทัลชีทหยุดชั่วคราว)</li>
+      </ul>
+    </section>
+
+    <!-- LINE SETUP -->
+    <section>
+      <h2>ตั้งค่า LINE OA (ทำครั้งเดียว)</h2>
+      <ul class="simple">
+        <li><strong>ปิด Greeting message</strong> (การ์ด Get Started เก่า) — ใช้แค่ carousel จาก webhook</li>
+        <li>เปิด Webhook → ชี้ <code>webhook.php</code> · events: <code>follow</code> + <code>message</code></li>
+        <li>Add เพื่อน → ได้ carousel 6 การ์ดอย่างเดียว · ปุ่มลงทะเบียนอยู่การ์ด 6</li>
+      </ul>
+    </section>
+
+    <!-- REDIRECTS -->
+    <section>
+      <h2>ลิงก์เก่า (redirect อัตโนมัติ)</h2>
+      <ul class="simple">
+        <li><code>index.php</code> → <code>login.php</code></li>
+        <li><code>registor.php</code> → <code>login.php</code></li>
+        <li><code>register.php?line_id=...</code> (ไม่ล็อกอิน) → <code>login.php</code></li>
+      </ul>
+    </section>
+
+    <section style="background:#fffef0;border-color:#e2e800;">
+      <h2>สรุปหนึ่งบรรทัด</h2>
+      <p style="margin:0;font-size:1rem;font-weight:600;text-align:center;">
+        Add LINE (carousel) → login → ลงทะเบียนครั้งเดียว → Dashboard ↔ คุย LINE ทุกวัน
+      </p>
+    </section>
+
+    <!-- DEV CHANGELOG — เพิ่มรายการใหม่ด้านบนสุดทุกครั้งที่แก้ flow -->
+    <section id="dev-changelog">
+      <h2>ประวัติการพัฒนา / สิ่งที่แก้ไข</h2>
+      <p class="dev-note">อัปเดตทุกครั้งที่แก้ path, LINE, ลงทะเบียน หรือ auth — รายการใหม่อยู่บนสุด · มีวันที่และเวลา</p>
+
+      <ol class="changelog">
+        <li>
+          <time datetime="2026-06-17T20:00">17 มิ.ย. 2026 · 20:00</time>
+          <h3><span class="tag tag--new">เพิ่ม</span>ส่วนประวัติ + สถานะปัจจุบัน</h3>
+          <ul>
+            <li>เพิ่มบล็อก「สถานะปัจจุบัน」และ「ประวัติการพัฒนา」ใน workflow-guide.html</li>
+            <li>กติกา: ทุกครั้งที่แก้ flow ให้เพิ่มรายการใหม่พร้อมวันที่เวลา (ดู <code>.cursor/rules/workflow-changelog.mdc</code>)</li>
+          </ul>
+        </li>
+        <li>
+          <time datetime="2026-06-17T19:59">17 มิ.ย. 2026 · 19:59</time>
+          <h3><span class="tag tag--cut">ตัด</span>Greeting Get Started — เหลือ carousel อย่างเดียว</h3>
+          <ul>
+            <li>ปิด Greeting message ใน LINE OA Manager (การ์ด「หมดปัญหา...?」+ Get Started)</li>
+            <li>ลบ <code>flex welcome.json</code> และโค้ด welcome เก่าใน <code>webhook.php</code></li>
+            <li>ตอน Add เพื่อนเห็นแค่ Flex Carousel 6 การ์ด · ปุ่มลงทะเบียนอยู่การ์ด 6</li>
+          </ul>
+        </li>
+        <li>
+          <time datetime="2026-06-12T18:00">12 มิ.ย. 2026 · 18:00</time>
+          <h3><span class="tag tag--fix">แก้</span>รวม path — เคลียร์ทางเละ</h3>
+          <ul>
+            <li>สร้าง <code>welcome_flex_lib.php</code> — carousel ต้อนรับสอดคล้องการ์ดเว็บ (1–6)</li>
+            <li><code>auth.php</code> — <code>auth_registration_complete()</code> บังคับ Google Drive + นโยบาย</li>
+            <li><code>register.php</code> — Drive บังคับ, Sheet optional, ตัดเมทัลชีท, ต้อง LINE Login ก่อน</li>
+            <li><code>login.php</code> การ์ด 5 — ตัดข้อความ「ปรับโครงสร้าง」(ย้ายไป LINE Flex เท่านั้น) · รองรับ <code>?slide=4</code></li>
+            <li><code>index.php</code>, <code>registor.php</code>, <code>register.php?line_id=</code> → redirect <code>login.php</code></li>
+            <li>สร้าง <code>workflow-guide.html</code> อธิบายผัง workflow</li>
+            <li>หยุด path เมทัลชีทชั่วคราว (demo แยกที่ <code>ms-workflow-internal/</code>)</li>
+          </ul>
+        </li>
+        <li>
+          <time datetime="2026-06-10T14:00">10 มิ.ย. 2026 · 14:00</time>
+          <h3><span class="tag tag--new">เริ่ม</span>Onboarding เว็บ + นโยบาย</h3>
+          <ul>
+            <li><code>login.php</code> — การ์ดแนะนำตัว 6 ใบ (เราเป็นใคร · ข้อมูล · โครงสร้าง demo)</li>
+            <li>LINE Login OAuth แทนการแนบ <code>line_id</code> ใน URL</li>
+            <li><code>privacy.php</code> / <code>terms.php</code> + คำถามสั้นตอนลงทะเบียน</li>
+            <li>ธีม Salt &amp; Pepper (#E2E800) · Lead ใช้คำอังกฤษใน UI</li>
+          </ul>
+        </li>
+        <li>
+          <time datetime="2026-06-07T10:00">7 มิ.ย. 2026 · 10:00</time>
+          <h3><span class="tag tag--new">เริ่ม</span>โปรเจกต์เลขา AI (LUEPiN)</h3>
+          <ul>
+            <li>LINE OA + <code>webhook.php</code> (AI, Flex, บันทึก Lead/งาน)</li>
+            <li><code>dashboard.php</code> — หน้าหลักเว็บ (Lead · ทรัพย์ · งาน · รายงาน)</li>
+            <li><code>index.php</code> LIFF รุ่นเก่า (ต่อมา redirect แล้ว)</li>
+            <li>Welcome Flex แบบ Get Started + ลิงก์ register/LIFF (ต่อมาถูกแทนที่ด้วย carousel)</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <footer>LUEPiN / เลขา AI · workflow-guide.html · อัปเดตล่าสุด 17 มิ.ย. 2026 20:00</footer>
+  </div>
+</body>
+</html>

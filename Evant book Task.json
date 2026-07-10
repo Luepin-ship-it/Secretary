@@ -1,0 +1,34 @@
+{
+  "_comment": "TickTick-style — พิมพ์งานก่อน + Quick Reply เลือกวัน (ใช้งานจริงผ่าน task_line_start_add() ใน lib/task_line_flow.php)",
+  "type": "text",
+  "text": "✍️ พิมพ์รายละเอียด Task ที่ต้องการเพิ่มได้เลย\n(หรือกดเลือกวันลัดจากปุ่มด้านล่าง)\n\nตัวอย่าง: ติดตามคุณนัท เลียบคลองสอง พรุ่งนี้ 10 โมง",
+  "quickReply": {
+    "items": [
+      {
+        "type": "action",
+        "action": {
+          "type": "message",
+          "label": "วันนี้",
+          "text": "วันนี้"
+        }
+      },
+      {
+        "type": "action",
+        "action": {
+          "type": "message",
+          "label": "พรุ่งนี้",
+          "text": "พรุ่งนี้"
+        }
+      },
+      {
+        "type": "action",
+        "action": {
+          "type": "datetimepicker",
+          "label": "📅 เลือกวันอื่น",
+          "data": "action=task_add&field=pick_date",
+          "mode": "datetime"
+        }
+      }
+    ]
+  }
+}

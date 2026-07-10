@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>งานโครงสร้าง · Workflow — ภายในองค์กร</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css?v=2">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar__brand">
+        <span class="badge badge--internal" aria-label="ใช้ภายในองค์กร">ภายในองค์กร</span>
+        <h1>งานโครงสร้าง · Job Workflow</h1>
+        <p class="topbar__sub">Demo ตาม flow ฝ่ายขาย → Sheet → หลายฝ่าย → Drive → LINE Group → ติดตั้ง → ส่งมอบ</p>
+      </div>
+      <div class="topbar__actions">
+        <label class="role-picker">
+          <span class="role-picker__label">มุมมอง</span>
+          <select id="role-select" aria-label="เลือกบทบาท">
+            <option value="sales">ฝ่ายขาย (Sales)</option>
+            <option value="design">ออกแบบ 3D</option>
+            <option value="accounting">บัญชี</option>
+            <option value="foreman">โฟร์แมน</option>
+            <option value="install">ทีมช่างติดตั้ง</option>
+            <option value="admin">ผู้ดูแล</option>
+          </select>
+        </label>
+        <button type="button" class="btn btn--ghost" id="btn-reset-demo" title="รีเซ็ตข้อมูลตัวอย่าง">รีเซ็ต demo</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <!-- Flow map -->
+      <aside class="flow-panel" aria-label="แผนผัง workflow">
+        <h2 class="panel-title">แผนผังงาน</h2>
+        <p class="panel-hint">กดขั้นตอนเพื่อดูรายละเอียด · สี = สถานะงานที่เลือก</p>
+        <div id="flow-map" class="flow-map"></div>
+      </aside>
+
+      <!-- Jobs + detail -->
+      <section class="work-panel">
+        <div class="work-panel__header">
+          <h2 class="panel-title">รายการ JOB</h2>
+          <button type="button" class="btn btn--accent" id="btn-new-job">
+            <span aria-hidden="true">+</span> เปิด JOB ใหม่
+          </button>
+        </div>
+
+        <div class="job-list-wrap">
+          <ul id="job-list" class="job-list" role="listbox" aria-label="รายการงาน"></ul>
+        </div>
+
+        <article id="job-detail" class="job-detail hidden" aria-live="polite">
+          <header class="job-detail__head">
+            <div>
+              <p class="job-detail__code" id="detail-code">JOB-26001</p>
+              <p class="job-detail__customer" id="detail-customer"></p>
+              <p class="job-detail__location" id="detail-location"></p>
+            </div>
+            <div class="job-detail__stage">
+              <span class="stage-label" id="detail-stage-label">สำรวจหน้างาน</span>
+              <span class="stage-pill" id="detail-stage-pill"></span>
+            </div>
+          </header>
+
+          <div class="tabs" role="tablist">
+            <button type="button" class="tab active" data-tab="progress" role="tab" aria-selected="true">ความคืบหน้า</button>
+            <button type="button" class="tab" data-tab="departments" role="tab">ฝ่ายงาน</button>
+            <button type="button" class="tab" data-tab="drive" role="tab">Drive</button>
+            <button type="button" class="tab" data-tab="line" role="tab">LINE Group</button>
+            <button type="button" class="tab" data-tab="checklist" role="tab">Checklist ช่าง</button>
+          </div>
+
+          <div id="tab-progress" class="tab-panel active">
+            <ol id="timeline" class="timeline"></ol>
+            <div class="action-bar" id="progress-actions"></div>
+          </div>
+
+          <div id="tab-departments" class="tab-panel hidden">
+            <div id="dept-grid" class="dept-grid"></div>
+          </div>
+
+          <div id="tab-drive" class="tab-panel hidden">
+            <ul id="drive-list" class="doc-list"></ul>
+            <button type="button" class="btn btn--ghost btn--sm" id="btn-add-doc">+ เพิ่มเอกสาร (demo)</button>
+          </div>
+
+          <div id="tab-line" class="tab-panel hidden">
+            <ul id="line-log" class="line-log"></ul>
+            <button type="button" class="btn btn--line btn--sm" id="btn-line-notify">ส่งแจ้งเตือน LINE Group (demo)</button>
+          </div>
+
+          <div id="tab-checklist" class="tab-panel hidden">
+            <ul id="checklist" class="checklist"></ul>
+          </div>
+        </article>
+
+        <div id="job-empty" class="empty-state">
+          <p>เลือก JOB จากรายการ หรือกด「เปิด JOB ใหม่」</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Prototype ภายในองค์กร · ข้อมูลเก็บใน browser (localStorage) · ยังไม่เชื่อม Google / LINE จริง</p>
+    </footer>
+  </div>
+
+  <!-- Modal: new job -->
+  <dialog id="modal-new" class="modal">
+    <form method="dialog" id="form-new-job" class="modal__body">
+      <h3>เปิด JOB ใหม่ — สำรวจหน้างาน</h3>
+      <label>ชื่อลูกค้า<input type="text" name="customer" required placeholder="บริษัท / บุคคล"></label>
+      <label>สถานที่หน้างาน<input type="text" name="location" required placeholder="จังหวัด / ที่อยู่"></label>
+      <label>หมายเหตุสำรวจ<textarea name="note" rows="2" placeholder="วัดขนาด / รูปถ่ายแล้ว"></textarea></label>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--ghost" id="modal-cancel">ยกเลิก</button>
+        <button type="submit" class="btn btn--accent">บันทึก → สร้าง JOB</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>

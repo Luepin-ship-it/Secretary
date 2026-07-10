@@ -1,0 +1,422 @@
+{
+    "type": "bubble",
+    "size": "mega",
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "backgroundColor": "#FFFFFF",
+        "contents": [
+            {
+                "type": "text",
+                "text": "REGISTER CHECKLIST",
+                "weight": "bold",
+                "color": "#10B981",
+                "size": "sm"
+            },
+            {
+                "type": "text",
+                "text": "ตรวจสอบข้อมูลลงทะเบียน",
+                "weight": "bold",
+                "size": "xl",
+                "color": "#2B2B2B",
+                "margin": "md",
+                "wrap": true
+            },
+            {
+                "type": "separator",
+                "margin": "xxl",
+                "color": "#D4D4D4"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "xxl",
+                "spacing": "md",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "spacing": "md",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "width": "28px",
+                                "height": "28px",
+                                "cornerRadius": "14px",
+                                "backgroundColor": "#10B981",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "1",
+                                        "size": "sm",
+                                        "weight": "bold",
+                                        "color": "#FFFFFF",
+                                        "align": "center",
+                                        "gravity": "center"
+                                    }
+                                ],
+                                "justifyContent": "center"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "flex": 6,
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "Line ID",
+                                        "size": "sm",
+                                        "color": "#2B2B2B",
+                                        "weight": "bold"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "{{line_id}}",
+                                        "size": "xs",
+                                        "color": "#B3B3B3",
+                                        "wrap": true,
+                                        "margin": "xs"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "text",
+                                "text": "ครบ",
+                                "size": "xs",
+                                "weight": "bold",
+                                "color": "#10B981",
+                                "align": "end",
+                                "gravity": "center",
+                                "flex": 3
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "spacing": "md",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "width": "28px",
+                                "height": "28px",
+                                "cornerRadius": "14px",
+                                "backgroundColor": "#5C4E4E",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "2",
+                                        "size": "sm",
+                                        "weight": "bold",
+                                        "color": "#FFFFFF",
+                                        "align": "center",
+                                        "gravity": "center"
+                                    }
+                                ],
+                                "justifyContent": "center"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "flex": 6,
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "ชื่อ นามสกุล",
+                                        "size": "sm",
+                                        "color": "#2B2B2B",
+                                        "weight": "bold"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "ยังไม่ได้กรอก",
+                                        "size": "xs",
+                                        "color": "#5C4E4E",
+                                        "wrap": true,
+                                        "margin": "xs"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "button",
+                                "style": "secondary",
+                                "height": "sm",
+                                "flex": 3,
+                                "color": "#D4D4D4",
+                                "action": {
+                                    "type": "message",
+                                    "label": "กรอก",
+                                    "text": "กรอกชื่อ นามสกุล"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "spacing": "md",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "width": "28px",
+                                "height": "28px",
+                                "cornerRadius": "14px",
+                                "backgroundColor": "#5C4E4E",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "3",
+                                        "size": "sm",
+                                        "weight": "bold",
+                                        "color": "#FFFFFF",
+                                        "align": "center",
+                                        "gravity": "center"
+                                    }
+                                ],
+                                "justifyContent": "center"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "flex": 6,
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "อาชีพ",
+                                        "size": "sm",
+                                        "color": "#2B2B2B",
+                                        "weight": "bold"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "ยังไม่ได้กรอก",
+                                        "size": "xs",
+                                        "color": "#5C4E4E",
+                                        "wrap": true,
+                                        "margin": "xs"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "button",
+                                "style": "secondary",
+                                "height": "sm",
+                                "flex": 3,
+                                "color": "#D4D4D4",
+                                "action": {
+                                    "type": "message",
+                                    "label": "กรอก",
+                                    "text": "กรอกอาชีพ"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "spacing": "md",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "width": "28px",
+                                "height": "28px",
+                                "cornerRadius": "14px",
+                                "backgroundColor": "#5C4E4E",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "4",
+                                        "size": "sm",
+                                        "weight": "bold",
+                                        "color": "#FFFFFF",
+                                        "align": "center",
+                                        "gravity": "center"
+                                    }
+                                ],
+                                "justifyContent": "center"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "flex": 6,
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "รหัสของลูกค้า",
+                                        "size": "sm",
+                                        "color": "#2B2B2B",
+                                        "weight": "bold"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "รอกำหนดรหัส",
+                                        "size": "xs",
+                                        "color": "#5C4E4E",
+                                        "wrap": true,
+                                        "margin": "xs"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "button",
+                                "style": "secondary",
+                                "height": "sm",
+                                "flex": 3,
+                                "color": "#D4D4D4",
+                                "action": {
+                                    "type": "message",
+                                    "label": "ขอรหัส",
+                                    "text": "กรอกรหัสของลูกค้า"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "text",
+                        "text": "รหัสหลักสำหรับเชื่อมต่อระบบ AI และเปิดสิทธิ์เข้าถึงโฟลเดอร์สำรองข้อมูลส่วนตัว",
+                        "size": "xs",
+                        "color": "#B3B3B3",
+                        "wrap": true,
+                        "margin": "12px"
+                    }
+                ]
+            },
+            {
+                "type": "separator",
+                "margin": "xxl",
+                "color": "#D4D4D4"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "xxl",
+                "spacing": "sm",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "การเชื่อมต่อระบบจัดเก็บข้อมูล",
+                        "weight": "bold",
+                        "size": "md",
+                        "color": "#2B2B2B",
+                        "wrap": true
+                    },
+                    {
+                        "type": "text",
+                        "text": "ส่วนนี้ไม่บังคับกรอก แต่แนะนำให้เชื่อมต่อเพื่อสำรองข้อมูล",
+                        "size": "xs",
+                        "color": "#B3B3B3",
+                        "wrap": true
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "spacing": "md",
+                        "margin": "md",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "Google sheet URL / ID",
+                                "size": "sm",
+                                "color": "#2B2B2B",
+                                "flex": 6,
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "ไม่ได้ใส่",
+                                "size": "xs",
+                                "weight": "bold",
+                                "color": "#5C4E4E",
+                                "align": "end",
+                                "gravity": "center",
+                                "flex": 3
+                            },
+                            {
+                                "type": "text",
+                                "text": "เสริม",
+                                "size": "xs",
+                                "color": "#B3B3B3",
+                                "align": "end",
+                                "gravity": "center",
+                                "flex": 1
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "spacing": "md",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "Google Drive Folder ID",
+                                "size": "sm",
+                                "color": "#2B2B2B",
+                                "flex": 6,
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "ไม่ได้ใส่",
+                                "size": "xs",
+                                "weight": "bold",
+                                "color": "#5C4E4E",
+                                "align": "end",
+                                "gravity": "center",
+                                "flex": 3
+                            },
+                            {
+                                "type": "text",
+                                "text": "เสริม",
+                                "size": "xs",
+                                "color": "#B3B3B3",
+                                "align": "end",
+                                "gravity": "center",
+                                "flex": 1
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "backgroundColor": "#FFFFFF",
+        "spacing": "sm",
+        "contents": [
+            {
+                "type": "button",
+                "style": "primary",
+                "height": "sm",
+                "color": "#2B2B2B",
+                "action": {
+                    "type": "message",
+                    "label": "กรอกข้อมูลที่ยังไม่ครบ",
+                    "text": "กรอกข้อมูลที่ยังไม่ครบ"
+                }
+            },
+            {
+                "type": "button",
+                "style": "secondary",
+                "height": "sm",
+                "color": "#D4D4D4",
+                "action": {
+                    "type": "message",
+                    "label": "เชื่อมต่อ Backup",
+                    "text": "เชื่อมต่อ Google Spreadsheet และ Google Drive"
+                }
+            }
+        ]
+    },
+    "styles": {
+        "footer": {
+            "separator": true
+        }
+    }
+}

@@ -1,0 +1,506 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "SALES REPORT",
+            "weight": "bold",
+            "color": "#1DB446",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "รายงานการขาย",
+            "weight": "bold",
+            "size": "xxl",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "text": "สรุป Lead, Pipeline และยอดขายล่าสุด",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "ปิดการขายแล้ว",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "18 คน / ฿1,250,000",
+                    "size": "sm",
+                    "color": "#1DB446",
+                    "align": "end",
+                    "weight": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "ยอดรวม Lead",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "126 คน",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "ติดต่อแล้ว",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "82 คน",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "ส่งใบเสนอราคา",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "34 คน",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "รอต่อรองเจรจา",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "12 คน",
+                    "size": "sm",
+                    "color": "#F59E0B",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "ปิดดีล",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "18 คน",
+                    "size": "sm",
+                    "color": "#1DB446",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "separator",
+                "margin": "xxl"
+              },
+              {
+                "type": "text",
+                "text": "Potential Lead",
+                "weight": "bold",
+                "size": "sm",
+                "color": "#111111",
+                "margin": "xxl"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "A - Hot",
+                    "size": "sm",
+                    "color": "#DC2626",
+                    "flex": 0,
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "15 คน / ฿980,000",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "B - Warm",
+                    "size": "sm",
+                    "color": "#F59E0B",
+                    "flex": 0,
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "28 คน / ฿1,420,000",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "C - Cool",
+                    "size": "sm",
+                    "color": "#2563EB",
+                    "flex": 0,
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "41 คน / ฿860,000",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "FOLLOW UP",
+            "weight": "bold",
+            "color": "#2563EB",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "ลูกค้าที่ต้องจัดการ",
+            "weight": "bold",
+            "size": "xl",
+            "margin": "md",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "วันนี้และพรุ่งนี้ ตาม Due Date",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "วันนี้",
+                    "size": "xs",
+                    "color": "#DC2626",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "คุณสมชาย ใจดี",
+                    "size": "md",
+                    "weight": "bold",
+                    "color": "#111111",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "โทร: 081-234-5678 | LINE",
+                    "size": "xs",
+                    "color": "#555555",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "สนใจแพ็กเกจ Enterprise ขอให้โทรกลับพร้อมส่วนลดพิเศษ",
+                    "size": "xs",
+                    "color": "#777777",
+                    "wrap": true
+                  }
+                ]
+              },
+              {
+                "type": "separator",
+                "margin": "md"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "พรุ่งนี้",
+                    "size": "xs",
+                    "color": "#F59E0B",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "บริษัท ABC จำกัด",
+                    "size": "md",
+                    "weight": "bold",
+                    "color": "#111111",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "โทร: 02-123-4567 | Email",
+                    "size": "xs",
+                    "color": "#555555",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "รอเอกสารเสนอราคาเวอร์ชันแก้ไข และนัดสรุปเงื่อนไข",
+                    "size": "xs",
+                    "color": "#777777",
+                    "wrap": true
+                  }
+                ]
+              },
+              {
+                "type": "separator",
+                "margin": "md"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "margin": "md",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "รายการทั้งหมด",
+                    "size": "xs",
+                    "color": "#aaaaaa",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "แตะเพื่อดูเพิ่ม",
+                    "size": "xs",
+                    "color": "#2563EB",
+                    "align": "end"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "color": "#2563EB",
+            "action": {
+              "type": "uri",
+              "label": "ดูรายละเอียดทั้งหมด",
+              "uri": "https://example.com/follow-up"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "USAGE REPORT",
+            "weight": "bold",
+            "color": "#7C3AED",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "Customer Usage",
+            "weight": "bold",
+            "size": "xxl",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "text": "สรุปการใช้งานระบบของลูกค้า",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Login Today",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "8,420",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "API Requests",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "245,910",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Top Feature",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "Order Tracking",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end",
+                    "wrap": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
