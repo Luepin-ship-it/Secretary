@@ -12,26 +12,26 @@ if (is_file($localConfig)) {
 }
 
 // Local XAMPP defaults — ใช้เมื่อไม่มี config.local.php
-if (!defined('DB_HOST')) define('DB_HOST', 'localhost');
-if (!defined('DB_USER')) define('DB_USER', 'root');
-if (!defined('DB_PASS')) define('DB_PASS', '');
-if (!defined('DB_NAME')) define('DB_NAME', 'antigravity_db');
+if (!defined('DB_HOST')) define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+if (!defined('DB_USER')) define('DB_USER', getenv('DB_USER') ?: 'root');
+if (!defined('DB_PASS')) define('DB_PASS', getenv('DB_PASS') ?: '');
+if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_NAME') ?: 'antigravity_db');
 
-if (!defined('LINE_ACCESS_TOKEN')) define('LINE_ACCESS_TOKEN', '');
-if (!defined('OPENAI_API_KEY')) define('OPENAI_API_KEY', '');
-if (!defined('LINE_LIFF_ID')) define('LINE_LIFF_ID', '');
+if (!defined('LINE_ACCESS_TOKEN')) define('LINE_ACCESS_TOKEN', getenv('LINE_ACCESS_TOKEN') ?: '');
+if (!defined('OPENAI_API_KEY')) define('OPENAI_API_KEY', getenv('OPENAI_API_KEY') ?: '');
+if (!defined('LINE_LIFF_ID')) define('LINE_LIFF_ID', getenv('LINE_LIFF_ID') ?: '');
 // LIFF ค้นหาชื่อโครงการ — สร้างใน LINE Developers → LIFF → Endpoint: https://YOUR_DOMAIN/liff/project_search.php
 // Scope: profile, openid, chat_message.write (ส่งกลับแชท)
-if (!defined('LINE_LIFF_PROJECT_SEARCH_ID')) define('LINE_LIFF_PROJECT_SEARCH_ID', '');
+if (!defined('LINE_LIFF_PROJECT_SEARCH_ID')) define('LINE_LIFF_PROJECT_SEARCH_ID', getenv('LINE_LIFF_PROJECT_SEARCH_ID') ?: '');
 // LIFF คู่มืออัปรูปทรัพย์ — Endpoint: https://YOUR_DOMAIN/liff/project_photos.php (Scope: profile)
-if (!defined('LINE_LIFF_PROJECT_PHOTOS_ID')) define('LINE_LIFF_PROJECT_PHOTOS_ID', '');
-if (!defined('LINE_LOGIN_CHANNEL_ID')) define('LINE_LOGIN_CHANNEL_ID', '');
-if (!defined('LINE_LOGIN_CHANNEL_SECRET')) define('LINE_LOGIN_CHANNEL_SECRET', '');
-if (!defined('GOOGLE_MAPS_API_KEY')) define('GOOGLE_MAPS_API_KEY', '');
-if (!defined('GOOGLE_MAP_ID')) define('GOOGLE_MAP_ID', '');
-if (!defined('LINE_OA_BASIC_ID')) define('LINE_OA_BASIC_ID', '');
-if (!defined('INTRO_STRUCTURE_PREVIEW_URL')) define('INTRO_STRUCTURE_PREVIEW_URL', '');
-if (!defined('GOOGLE_DRIVE_API_KEY')) define('GOOGLE_DRIVE_API_KEY', '');
+if (!defined('LINE_LIFF_PROJECT_PHOTOS_ID')) define('LINE_LIFF_PROJECT_PHOTOS_ID', getenv('LINE_LIFF_PROJECT_PHOTOS_ID') ?: '');
+if (!defined('LINE_LOGIN_CHANNEL_ID')) define('LINE_LOGIN_CHANNEL_ID', getenv('LINE_LOGIN_CHANNEL_ID') ?: '');
+if (!defined('LINE_LOGIN_CHANNEL_SECRET')) define('LINE_LOGIN_CHANNEL_SECRET', getenv('LINE_LOGIN_CHANNEL_SECRET') ?: '');
+if (!defined('GOOGLE_MAPS_API_KEY')) define('GOOGLE_MAPS_API_KEY', getenv('GOOGLE_MAPS_API_KEY') ?: '');
+if (!defined('GOOGLE_MAP_ID')) define('GOOGLE_MAP_ID', getenv('GOOGLE_MAP_ID') ?: '');
+if (!defined('LINE_OA_BASIC_ID')) define('LINE_OA_BASIC_ID', getenv('LINE_OA_BASIC_ID') ?: '');
+if (!defined('INTRO_STRUCTURE_PREVIEW_URL')) define('INTRO_STRUCTURE_PREVIEW_URL', getenv('INTRO_STRUCTURE_PREVIEW_URL') ?: '');
+if (!defined('GOOGLE_DRIVE_API_KEY')) define('GOOGLE_DRIVE_API_KEY', getenv('GOOGLE_DRIVE_API_KEY') ?: '');
 
 // การเปิดใช้งานการเชื่อมต่อฐานข้อมูลด้วย mysqli
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
