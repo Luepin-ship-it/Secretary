@@ -113,9 +113,15 @@ $error_msg = isset($_GET['error']) ? trim($_GET['error']) : '';
               ผู้ช่วย AI สำหรับ<strong class="text-[#F0F0F0]">งานขาย</strong> — ช่วยดูแลลูกค้า งานที่ต้องทำ และเป้ายอด ครบวงจรในที่เดียว
               ใช้ได้กับทีมขายหลายสายงาน
             </p>
-            <p class="text-sm text-[#D6D6D6] leading-relaxed mt-3">
+            <p class="text-sm text-[#D6D6D6] leading-relaxed mt-3 flex-1">
               คุยผ่าน LINE แล้วเปิด Dashboard บนเว็บเพื่อทำงานแบบเต็มจอ
             </p>
+          </div>
+          
+          <div class="mt-5 flex justify-center">
+            <button type="button" onclick="goTo(LOGIN_INDEX, true)" class="text-sm text-[#F0F0F0] hover:text-[#E2E800] font-medium underline underline-offset-4 transition inline-flex items-center gap-1.5">
+              มีบัญชีอยู่แล้ว? เข้าสู่ระบบเลย <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
           </div>
         </section>
 
@@ -241,6 +247,7 @@ $error_msg = isset($_GET['error']) ? trim($_GET['error']) : '';
               <p class="text-[#D6D6D6] text-sm mb-6 leading-relaxed">ระบบใช้ LINE ID เป็นบัญชีของคุณ<br>เว็บกับเลขา AI ใน LINE จะต้องเป็นคนเดียวกัน<br><span class="text-[#979797] text-xs">ครั้งแรกจะพาไปลงทะเบียนก่อนเข้า Dashboard</span></p>
               <a href="<?php echo htmlspecialchars($login_url); ?>"
                  id="line-login-btn"
+                 onclick="localStorage.setItem('has_seen_onboarding', 'true');"
                  class="block w-full py-3.5 rounded-lg bg-[#06C755] hover:bg-[#05b34c] text-white font-bold transition">
                 เข้าสู่ระบบด้วย LINE
               </a>
@@ -291,7 +298,12 @@ $error_msg = isset($_GET['error']) ? trim($_GET['error']) : '';
         'panels' => $structure_demo,
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>;
 
-    const INITIAL_SLIDE = <?php echo (int)$initial_slide; ?>;
+    let initialSlideToUse = <?php echo (int)$initial_slide; ?>;
+    
+    // Check if user has seen onboarding previously
+    if (localStorage.getItem('has_seen_onboarding') === 'true') {
+      initialSlideToUse = LOGIN_INDEX;
+    }
 
     let index = 0;
     const track = document.getElementById('slide-track');
@@ -366,7 +378,7 @@ $error_msg = isset($_GET['error']) ? trim($_GET['error']) : '';
       renderStructPanel(Object.keys(STRUCT_DEMO.nav)[0]);
     }
 
-    goTo(INITIAL_SLIDE, true);
+    goTo(initialSlideToUse, true);
     if (window.lucide) lucide.createIcons();
   </script>
 </body>
