@@ -49,9 +49,12 @@ CREATE TABLE `leads` (
     `user_id` INT NOT NULL,                                       -- เชื่อมโยงผู้ใช้ที่เป็นเจ้าของ
     `lead_code` VARCHAR(50) NOT NULL,                             -- รหัสดีล เช่น L042
     `lead_name_enc` TEXT DEFAULT NULL,                            -- ชื่อลูกค้า (เข้ารหัส)
+    `lead_name_hash` VARCHAR(64) DEFAULT NULL,                    -- ชื่อลูกค้า (Hash สำหรับค้นหาแบบ Exact match)
     `project_enc` TEXT DEFAULT NULL,                             -- โครงการ (เข้ารหัส)
     `phone_enc` TEXT DEFAULT NULL,                                -- เบอร์โทร (เข้ารหัส)
+    `phone_hash` VARCHAR(64) DEFAULT NULL,                        -- เบอร์โทร (Hash)
     `line_id_enc` TEXT DEFAULT NULL,                              -- Line ID (เข้ารหัส)
+    `line_id_hash` VARCHAR(64) DEFAULT NULL,                      -- Line ID (Hash)
     `budget_enc` TEXT DEFAULT NULL,                               -- งบประมาณ (เข้ารหัส)
     `potential` VARCHAR(10) DEFAULT 'B',                          -- ระดับความรีบ A, B, C
     `occupation_enc` TEXT DEFAULT NULL,                           -- อาชีพ (เข้ารหัส)
@@ -79,7 +82,11 @@ CREATE TABLE `leads` (
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-    INDEX `idx_user_lead` (`user_id`, `lead_code`)
+    INDEX `idx_user_lead` (`user_id`, `lead_code`),
+    INDEX `idx_user_status` (`user_id`, `status`),
+    INDEX `idx_user_created` (`user_id`, `created_at`),
+    INDEX `idx_phone_hash` (`phone_hash`),
+    INDEX `idx_line_hash` (`line_id_hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 3. ตารางเก็บข้อมูลฝั่งเจ้าของทรัพย์สิน (Owners)
@@ -88,6 +95,7 @@ CREATE TABLE `owners` (
     `user_id` INT NOT NULL,                                       -- เชื่อมโยงผู้ใช้ที่เป็นเจ้าของ
     `code_list` VARCHAR(50) NOT NULL,                             -- Code list รหัสทรัพย์สิน เช่น O055
     `owner_name_enc` TEXT DEFAULT NULL,                            -- ชื่อเจ้าของ (เข้ารหัส)
+    `owner_name_hash` VARCHAR(64) DEFAULT NULL,                    -- ชื่อเจ้าของ (Hash สำหรับค้นหาแบบ Exact match)
     `project_enc` TEXT DEFAULT NULL,                             -- โครงการ (เข้ารหัส) — legacy / EN
     `project_name_en_enc` TEXT DEFAULT NULL,                     -- ชื่อโครงการ EN (เข้ารหัส)
     `project_name_th_enc` TEXT DEFAULT NULL,                     -- ชื่อโครงการ TH (เข้ารหัส)
@@ -107,7 +115,9 @@ CREATE TABLE `owners` (
     `incomplete_details_enc` TEXT DEFAULT NULL,                   -- เหตุผลที่ข้อมูลไม่ครบ ขาดอะไร (เข้ารหัส)
     `property_type_enc` TEXT DEFAULT NULL,                        -- Property Type (เข้ารหัส)
     `phone_enc` TEXT DEFAULT NULL,                                -- เบอร์โทร (เข้ารหัส)
+    `phone_hash` VARCHAR(64) DEFAULT NULL,                        -- เบอร์โทร (Hash)
     `line_id_enc` TEXT DEFAULT NULL,                              -- Line ID (เข้ารหัส)
+    `line_id_hash` VARCHAR(64) DEFAULT NULL,                      -- Line ID (Hash)
     `zone_enc` TEXT DEFAULT NULL,                                 -- โซน (เข้ารหัส)
     `soi_enc` TEXT DEFAULT NULL,                                  -- ซอย (เข้ารหัส)
     `area_enc` TEXT DEFAULT NULL,                                 -- แหล่ง/พื้นที่กว้างๆ (เข้ารหัส)
@@ -138,7 +148,10 @@ CREATE TABLE `owners` (
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-    INDEX `idx_user_owner` (`user_id`, `code_list`)
+    INDEX `idx_user_owner` (`user_id`, `code_list`),
+    INDEX `idx_user_status` (`user_id`, `availability_status`, `sales_status`),
+    INDEX `idx_phone_hash` (`phone_hash`),
+    INDEX `idx_line_hash` (`line_id_hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 3b. ประวัติติดต่อเจ้าของทรัพย์
@@ -209,7 +222,8 @@ CREATE TABLE `reject_logs` (
     `reject_reason` VARCHAR(255) NOT NULL,                        -- เหตุผลในการรีเจคจริงๆ
     `raw_message_enc` TEXT DEFAULT NULL,                          -- ข้อความดิบของลูกค้ารอบข้าง (เข้ารหัส)
     `rejected_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+    FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+    INDEX `idx_user_date` (`user_id`, `rejected_at` DESC)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 5. ตารางงาน/การติดตามผล (Tasks)
@@ -225,12 +239,14 @@ CREATE TABLE `tasks` (
     `owner_code` VARCHAR(50) DEFAULT NULL,                        -- ลิงก์หารหัส owner (หากมี)
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+    FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+    INDEX `idx_user_status_date` (`user_id`, `is_completed`, `due_date`),
+    INDEX `idx_cron_notify` (`is_completed`, `due_date`, `due_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 6. ตารางตั้งเป้า Pipeline (รายได้รายเดือน + conversion funnel)
 CREATE TABLE `pipeline_settings` (
-    `user_id` INT PRIMARY KEY,
+    `user_id` INT NOT NULL,
     `target_month` CHAR(7) NOT NULL DEFAULT '',
     `monthly_target` INT UNSIGNED DEFAULT 0,
     `commission_per_deal` INT UNSIGNED DEFAULT 50000,
@@ -241,5 +257,6 @@ CREATE TABLE `pipeline_settings` (
     `need_showing` INT UNSIGNED DEFAULT 0,
     `need_nego` INT UNSIGNED DEFAULT 0,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`user_id`, `target_month`),
     FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
